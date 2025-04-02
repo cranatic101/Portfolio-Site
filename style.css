@@ -1,0 +1,283 @@
+
+
+:root {
+  --primary-white: #fffff5ff; /* Blue */
+  --primary-black: rgb(13, 17, 20); /* Green */
+}
+#no-scroll {
+  overflow:hidden;
+}
+
+body {
+  margin:0;
+  transition: background-color .5s;
+  background-color: var(--primary-white);
+}
+#sec1 {
+  background-color: var(--primary-white);
+  position: relative;
+  height:700px;
+  
+}
+#sec2 {
+  box-shadow: 0px -20px 50px rgba(13, 17, 20, 0.99);
+  background-color: var(--primary-black);
+  position: relative;
+  height:700px;
+  
+
+}
+
+
+
+h1 {
+  
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: 50px;
+  font-style: normal;
+}
+
+#name {
+  
+  display:inline-block;
+  position: fixed;
+  z-index:5;
+  top: 30%;
+  left:10%;
+}
+
+#mountain {
+
+  width:100%;
+  position: absolute;
+  top:0%;
+  left:0%
+  
+  
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  width:200px;
+  font-family:"Space Grotesk", sans-serif;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--primary-white);
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: var(--primary-white);
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  font-size: 36px;
+}
+
+/* --- Hamburger Icon Styling --- */
+.menu-icon {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.menu-icon div {
+  width: 100%;
+  height: 5px;
+  background-color: var(--primary-black);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* --- When sidebar is opened, animate the icon --- */
+.menu-icon.open div:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.menu-icon.open div:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open div:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
+
+
+/* --- Change icon color when navbar is open --- */
+.menu-icon.open div {
+  background-color: var(--primary-white); /* Turns white when navbar opens */
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#centered-work {
+  
+  padding-top:30px;
+  position:absolute;
+  left:42%;
+  top:2%;
+}
+
+:root {
+  --dark: rgb(13, 17, 20);
+  --light: #fffff5ff;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* Dark Background */
+body {
+  background: var(--light);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* Portfolio Container */
+.portfolio-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100vw;
+  padding: top 20px left 20px bottom 20px
+}
+
+/* Timeline on the Right */
+.timeline {
+  position: fixed;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: right;
+}
+
+.timeline h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.timeline ul {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline li {
+  font-size: 12px;
+  margin: 10px 0;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.timeline li.active {
+  opacity: 1;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+/* Portfolio Section (One Scrollbar Only) */
+.portfolio {
+  padding-top:100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+ 
+}
+
+/* Project Cards */
+.project {
+  width: 40%;
+  max-width: 800px;
+  padding: 30px;
+  background: rgba(255, 255, 245, 0.1);
+  border: 2px solid var(--dark);
+  border-radius: 15px;
+  text-align: left;  /* Align text to the left */
+  display: flex;  /* Use flexbox for layout */
+  align-items: center;  /* Vertically align content */
+  justify-content: space-between;  /* Space between the title/description and image */
+  scroll-snap-align: center;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out, opacity 0.3s ease-in-out;
+  margin: 100px 0;
+  opacity: 0.5;
+}
+
+/* BIG BIG Selected Project */
+.project.selected {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 50px grey;
+  opacity: 1;
+}
+
+.card-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+/* Project Image (on the right side) */
+.project img {
+  width: 40%;  /* Adjusted width for the image */
+  height: auto;
+  border-radius: 10px;
+  margin-left: 20px;  /* Space between image and text */
+}
+
+/* Title and Description Container (Left side) */
+.project .text-container {
+  display: flex;
+  flex-direction: column;  /* Stack the title and description vertically */
+  justify-content: center;  /* Vertically center the text */
+  width: 50%;  /* Ensure the text container takes up 50% of the space */
+}
+
+/* Title */
+.project h2 {
+  font-size: 24px;  /* Smaller font size for the title */
+  margin-bottom: 10px;
+  font-family: "Space Grotesk", sans-serif;  /* Keep the title font the same */
+}
+
+/* Description */
+.project p {
+  font-size: 14px;  /* Smaller font size for the description */
+  opacity: 0.8;
+  font-family: "Arial", sans-serif;  /* Different font for the description */
+  line-height: 1.5;  /* Improved readability */
+  margin-top: 5px;  /* Space between the title and description */
+}
