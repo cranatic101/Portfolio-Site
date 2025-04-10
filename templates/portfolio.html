@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  <title>Suhaas Vellanki | Portfolio</title>
+</head>
+<body id = "no-scroll">
+  <div id="mySidenav" class="sidenav">
+    <a class = "navText" href="/">Landing</a>
+    <a class = "navText" href="/portfolio">My Work</a>
+    <a class = "navText" href="/contact">Contact Me</a>
+  </div>
+  
+  <!-- Animated Hamburger Menu -->
+  <div class="menu-icon" onclick="toggleNav()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <h1 class = "centered">My Work</h1>
+  <h2 id ="ahh"> test</h2>
+  <div class="portfolio-container">
+    <div class="timeline">
+        <h2>Timeline</h2>
+        <ul>
+            {% for project in projects %}
+                <li data-index="{{ loop.index0 }}" data-target="project-{{ loop.index0 }}">
+                    {{ project.name }} - {{ project.year }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="portfolio">
+        {% for project in projects %}
+        <div id="project-{{ loop.index0 }}" class="project" data-index="{{ loop.index0 }}">
+            <div class="card-text">
+                <h2>{{ project.name }}</h2>
+                <p>{{ project.description }}</p>
+            </div>
+            <img src="{{ url_for('static', filename='images/' + project.image) }}" alt="{{ project.name }}">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <script src="../static/js/script.js"></script>
+</body>
+</html>

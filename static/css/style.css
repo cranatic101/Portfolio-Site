@@ -1,14 +1,45 @@
 
 
 :root {
+
   --primary-white: #fffff5ff; /* Blue */
   --primary-black: rgb(13, 17, 20); /* Green */
 }
+/* Light mode styles (default) */
+html.light-mode {
+  background-color: white;
+  color: black;
+}
+
+/* Dark mode styles */
+html.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+/* Custom styles for the slider */
+.slider-container {
+  margin-top: 20px;
+}
+
+input[type="range"] {
+  width: 100px;
+  height: 25px;
+}
+
+
+#ahh {
+  position:absolute;
+  top:20%;
+  left:50%
+}
+
 #no-scroll {
   overflow:hidden;
 }
 
 body {
+  
   margin:0;
   transition: background-color .5s;
   background-color: var(--primary-white);
@@ -136,7 +167,7 @@ h1 {
   .sidenav a {font-size: 18px;}
 }
 
-#centered-work {
+.centered{
   
   padding-top:30px;
   position:absolute;
@@ -144,10 +175,7 @@ h1 {
   top:2%;
 }
 
-:root {
-  --dark: rgb(13, 17, 20);
-  --light: #fffff5ff;
-}
+
 
 /* Reset */
 * {
@@ -158,11 +186,6 @@ h1 {
 }
 
 /* Dark Background */
-body {
-  background: var(--light);
-  color: var(--dark);
-  overflow-x: hidden;
-}
 
 /* Portfolio Container */
 .portfolio-container {
@@ -204,7 +227,7 @@ body {
 .timeline li.active {
   opacity: 1;
   font-weight: bold;
-  color: var(--dark);
+  color: var(--primary-black);
 }
 
 /* Portfolio Section (One Scrollbar Only) */
@@ -225,8 +248,8 @@ body {
   width: 40%;
   max-width: 800px;
   padding: 30px;
-  background: rgba(255, 255, 245, 0.1);
-  border: 2px solid var(--dark);
+  background: var(--primary-white);
+  border: 2px solid var(--primary-black);
   border-radius: 15px;
   text-align: left;  /* Align text to the left */
   display: flex;  /* Use flexbox for layout */
@@ -280,4 +303,80 @@ body {
   font-family: "Arial", sans-serif;  /* Different font for the description */
   line-height: 1.5;  /* Improved readability */
   margin-top: 5px;  /* Space between the title and description */
+}
+
+.contact-section {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 40px 30px;
+  background-color: rgba(255, 255, 245, 0.85); /* matches var(--primary-black) with slight transparency */
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(13, 17, 20, 0.08); /* subtle black glow */
+  text-align: center;
+  color: var(--primary-white);
+}
+
+.contact-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary-white);
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  font-size: 1rem;
+  color: var(--primary-white);
+  margin-bottom: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: var(--primary-white);
+  border: 1.5px solid rgba(13, 17, 20, 0.3);
+  border-radius: 10px;
+  font-size: 1rem;
+  color: var(--primary-white);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(13, 17, 20, 0.5);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #82d4aa; /* temp soft green accent */
+  box-shadow: 0 0 8px #82d4aa;
+}
+
+.contact-form button {
+  background: #82d4aa; /* soft green or change to a color you want */
+  color: var(--primary-black);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  box-shadow: 0 0 12px #82d4aa;
+  transform: scale(1.03);
+}
+
+.contact-info {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: var(--primary-white);
+}
+
+.contact-info a {
+  color: #82d4aa;
+  text-decoration: none
 }

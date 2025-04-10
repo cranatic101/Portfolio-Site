@@ -108,3 +108,38 @@ try {
 } catch {
   console.log("b");
 }
+
+
+const slider = document.getElementById('mode-slider');
+const htmlElement = document.documentElement; // This is the <html> element
+
+// Function to load the saved theme from localStorage
+function loadTheme() {
+    const savedMode = localStorage.getItem('theme'); // Get saved theme from localStorage
+    if (savedMode) {
+        htmlElement.classList.add(savedMode);
+        slider.value = savedMode === 'dark-mode' ? 1 : 0;
+    } else {
+        // Default to light mode if no saved theme exists
+        htmlElement.classList.add('light-mode');
+        slider.value = 0;
+    }
+}
+
+// Event listener to toggle between light and dark mode
+slider.addEventListener('input', function() {
+    if (slider.value == 1) {
+        htmlElement.classList.remove('light-mode');
+        htmlElement.classList.add('dark-mode');
+        htmlElement.style.filter = 'invert(100%)';
+        localStorage.setItem('theme', 'dark-mode'); // Save the theme in localStorage
+    } else {
+        htmlElement.classList.remove('dark-mode');
+        htmlElement.classList.add('light-mode');
+        htmlElement.style.filter = 'invert(0%)';
+        localStorage.setItem('theme', 'light-mode'); // Save the theme in localStorage
+    }
+});
+
+// Load the saved theme when the page is loaded
+loadTheme();

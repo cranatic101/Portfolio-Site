@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -12,9 +12,13 @@
 
   <body>
     <div id="mySidenav" class="sidenav">
-      <a class = "navText" href="/landing.html">Landing</a>
-      <a class = "navText" href="/portfolio.html">My Work</a>
-      <a class = "navText" href="/contact.html">Contact Me</a>
+      <a class = "navText" href="/">Landing</a>
+      <a class = "navText" href="/portfolio">My Work</a>
+      <a class = "navText" href="/contact">Contact Me</a>
+    </div>
+    <div class="slider-container">
+      <label for="mode-slider">Toggle Dark Mode:</label>
+      <input type="range" id="mode-slider" min="0" max="1" step="1">
     </div>
     
     <!-- Animated Hamburger Menu -->
@@ -30,12 +34,12 @@
       <div id = "name">
         <h1>Suhaas Vellanki</h1>
       </div>
-      <img id="mountain" src="mountain.png" alt="Background Mountain">
+      <img id="mountain" src="../static/images/mountain.png" alt="Background Mountain">
     </section>
     <section id = "sec2">
       <h1>aef</h1>
     </section>
     
-    <script src="script.js"></script>
+    <script src="../static/js/script.js"></script>
   </body>
 </html>
