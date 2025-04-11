@@ -125,6 +125,17 @@ function loadTheme() {
         slider.value = 0;
     }
 }
+window.addEventListener('scroll', function () {
+  const sec2 = document.querySelector('#sec2');
+  const text = document.querySelector('#belowText');
+  const sec2Top = sec2.getBoundingClientRect().top;
+
+  if (sec2Top < window.innerHeight * 0.75) {
+    text.classList.add('visible');
+  } else {
+    text.classList.remove('visible');
+  }
+});
 
 // Event listener to toggle between light and dark mode
 slider.addEventListener('input', function() {
