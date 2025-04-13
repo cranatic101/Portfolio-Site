@@ -137,20 +137,39 @@ window.addEventListener('scroll', function () {
   }
 });
 
-// Event listener to toggle between light and dark mode
-slider.addEventListener('input', function() {
-    if (slider.value == 1) {
-        htmlElement.classList.remove('light-mode');
-        htmlElement.classList.add('dark-mode');
-        htmlElement.style.filter = 'invert(100%)';
-        localStorage.setItem('theme', 'dark-mode'); // Save the theme in localStorage
-    } else {
-        htmlElement.classList.remove('dark-mode');
-        htmlElement.classList.add('light-mode');
-        htmlElement.style.filter = 'invert(0%)';
-        localStorage.setItem('theme', 'light-mode'); // Save the theme in localStorage
-    }
-});
 
-// Load the saved theme when the page is loaded
-loadTheme();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  console.log("js");
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    console.log("subm");
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value
+    };
+
+    try {
+      const res = await fetch('/send_email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        alert("Message sent successfully!");
+        form.reset();
+      } else {
+        alert("Something went wrong: " + result.error);
+      }
+    } catch (err) {
+      alert("Error: " + err.message);
+    }
+  });
+});
