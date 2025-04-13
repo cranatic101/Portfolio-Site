@@ -1,0 +1,8 @@
+runtime: python310  # Specify the Python version (choose the appropriate version for your app)
+
+entrypoint: gunicorn -b :$PORT main:app  # Replace `main` with your app entry file if different
+
+env_variables:
+  FLASK_ENV: production
+
+instance_class: F2  # Optional: Specify the instance class, adjust as needed

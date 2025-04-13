@@ -2,20 +2,10 @@
 
 :root {
 
-  --primary-white: #fffff5ff; /* Blue */
-  --primary-black: rgb(13, 17, 20); /* Green */
-}
-/* Light mode styles (default) */
-html.light-mode {
-  background-color: white;
-  color: black;
+  --primary-white: #fffff5ff; 
+  --primary-black: #070d13; 
 }
 
-/* Dark mode styles */
-html.dark-mode {
-  background-color: black;
-  color: white;
-}
 
 /* Custom styles for the slider */
 .slider-container {
@@ -55,14 +45,15 @@ body {
 #sec1 {
   background-color: var(--primary-white);
   position: relative;
-  height:700px;
+  height:650px;
   
 }
 #sec2 {
-  box-shadow: 0px -20px 50px rgba(13, 17, 20, 0.99);
-  background-image: linear-gradient(var(--primary-black), black);
+  margin-top: -100px;
+  /*box-shadow: 0px -20px 50px rgba(13, 17, 20, 0.99);*/
+  background-image: linear-gradient(#070d13 0%, #070d13 30%, black 100%);
   position: relative;
-  height:1000px;
+  height:1200px;
   
 
 }
@@ -82,7 +73,7 @@ h1 {
   
   display:inline-block;
   position: fixed;
-  z-index:5;
+  z-index:10;
   top: 20%;
   left:10%;
 }
@@ -416,4 +407,63 @@ h1 {
 .contact-info a {
   color: #82d4aa;
   text-decoration: none
+}
+
+.parallax-container {
+  position: relative;
+  height: 700px;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  width:110%;
+  height:100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+
+
+
+#layer1 { z-index: 1; transform: translateZ(-0.6px); }
+#layer2 { z-index: 2; transform: translateZ(-0.4px); }
+#layer3 { z-index: 3; transform: translateZ(-0.2px); }
+#layer4 { z-index: 4; transform: translateZ(-0.1px); }
+#layer5 { 
+  z-index: 5; 
+  transform: translateZ(0px); 
+  position: absolute;
+  width:110%;
+  height:100%;
+  top: 75%;
+  left: 0%;
+}
+#layer6 { 
+  z-index: 6; 
+  transform: translateZ(0px); 
+  position: absolute;
+  width:110%;
+  height:100%;
+  top: 60%;
+  left: 0%;
+}
+#layer7 { 
+  z-index: 7; 
+  transform: translateZ(0px); 
+  position: absolute;
+  width:110%;
+  height:100%;
+  top: 45%;
+  left: 0%;
+}
+#layer8 { 
+  z-index: 8; 
+  position: absolute;
+  width:110%;
+  height:100%;
+  top: 30%;
+  left: 0%;
+  transform: translateZ(0px); 
 }

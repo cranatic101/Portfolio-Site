@@ -137,6 +137,15 @@ window.addEventListener('scroll', function () {
   }
 });
 
+window.addEventListener("scroll", function () {
+  const scrollTop = window.pageYOffset;
+  const layers = document.querySelectorAll(".parallax-layer");
+
+  layers.forEach((layer, index) => {
+    const speed = (index + 1) * -0.1; // change multiplier for stronger effect
+    layer.style.transform = `translateY(${scrollTop * speed}px)`;
+  });
+});
 
 
 document.addEventListener('DOMContentLoaded', () => {
