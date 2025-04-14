@@ -76,6 +76,7 @@ h1 {
   z-index:10;
   top: 20%;
   left:10%;
+  transition: 0.3s;
 }
 #grass {
   width:100%;
@@ -114,11 +115,47 @@ h1 {
   
 }
 
+.confirmation-message {
+  display: none; /* Hide the message by default */
+  margin-bottom: 20px;
+  background-color: #d4edda; /* soft green background */
+  border: 2px solid #28a745; /* green border */
+  border-radius: 8px;
+  padding: 15px;
+  color: #155724; /* dark green text */
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  max-width: 600px; /* control the width */
+  margin-left: auto;
+  margin-right: auto;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.hidden-text {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.hidden-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.confirmation-message p {
+  margin: 0;
+  padding: 0;
+}
+
+
+
 .sidenav {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   right: 0;
   background-color: #111;
@@ -128,26 +165,44 @@ h1 {
 }
 
 .sidenav a {
-  width:200px;
-  font-family:"Space Grotesk", sans-serif;
+  position: relative;
+  width: 200px;
+  font-family: "Space Grotesk", sans-serif;
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 20px;
   color: var(--primary-white);
-  display: block;
-  transition: 0.3s;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.sidenav a::after {
+  content: '';
+  position: absolute;
+  left: 32px;
+  bottom: 6px;
+  height: 2px;
+  width: 0;
+  background-color: var(--primary-white);
+  transition: width 0.3s ease-in-out;
 }
 
 .sidenav a:hover {
-  color: var(--primary-white);
+  color: #bbbbbb; /* optional: slight color shift */
 }
+.sidenav a:hover::after {
+  width: calc(100% - 90px); /* subtract left padding to match text width */
+}
+
 
 .sidenav .closebtn {
   position: absolute;
   top: 0;
   left: 25px;
   font-size: 36px;
+  z-index:10;
 }
+
 
 /* --- Hamburger Icon Styling --- */
 .menu-icon {
@@ -157,7 +212,7 @@ h1 {
   width: 35px;
   height: 30px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 10;
 }
 
 .menu-icon div {
@@ -165,8 +220,12 @@ h1 {
   height: 5px;
   background-color: var(--primary-black);
   margin: 6px 0;
-  transition: 0.4s;
+  transition: 0.3s;
 }
+.menu-icon.white-icon div {
+  background-color: var(--primary-white);
+}
+
 
 /* --- When sidebar is opened, animate the icon --- */
 .menu-icon.open div:nth-child(1) {

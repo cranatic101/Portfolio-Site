@@ -1,9 +1,35 @@
-let observer = new IntersectionObserver( 
+const nameObserver = new IntersectionObserver(
   ([entry]) => {
-    document.getElementById("name").style.color = entry.isIntersecting ? "#fffff5ff" : "black";
+    const nameElement = document.getElementById("name");
+    nameElement.style.color = entry.isIntersecting ? "#fffff5ff" : "#070d13";
   },
-  { threshold: 0.4 } // Trigger when 20% of sec2 is in view
+  { threshold: 0.23 }
 );
+try {
+  nameObserver.observe(document.querySelector("#sec2"));
+} catch {
+  console.log("ahh");
+}
+
+const navObserver = new IntersectionObserver(
+  ([entry]) => {
+    const menuIcon = document.querySelector(".menu-icon");
+    if (entry.isIntersecting) {
+      menuIcon.classList.add("white-icon");
+    } else {
+      menuIcon.classList.remove("white-icon");
+    }
+  },
+  { threshold: 0.1 } // lower threshold so it changes color sooner
+);
+try {
+  nameObserver.observe(document.querySelector("#sec2"));
+} catch {
+  console.log("ahh");
+}
+
+
+
 
 const projects = document.querySelectorAll(".project");
 const timelineItems = document.querySelectorAll(".timeline li");
@@ -113,18 +139,6 @@ try {
 const slider = document.getElementById('mode-slider');
 const htmlElement = document.documentElement; // This is the <html> element
 
-// Function to load the saved theme from localStorage
-function loadTheme() {
-    const savedMode = localStorage.getItem('theme'); // Get saved theme from localStorage
-    if (savedMode) {
-        htmlElement.classList.add(savedMode);
-        slider.value = savedMode === 'dark-mode' ? 1 : 0;
-    } else {
-        // Default to light mode if no saved theme exists
-        htmlElement.classList.add('light-mode');
-        slider.value = 0;
-    }
-}
 window.addEventListener('scroll', function () {
   const sec2 = document.querySelector('#sec2');
   const text = document.querySelector('#belowText');
@@ -172,7 +186,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const result = await res.json();
       if (result.success) {
-        alert("Message sent successfully!");
+        // Prevent default form submission
+        
+        // Get the confirmation message element
+        var message = document.getElementById("confirmationMessage");
+        
+        // Show the confirmation message
+        message.style.display = "block"; // Make the message visible
+        
+        // Add class to make the message fade in
+        message.classList.add("visible");
+        
+        // Optionally, hide the message after a few seconds
+        setTimeout(function() {
+          message.style.display = "none"; // Hide the message again
+          message.classList.remove("visible"); // Reset the fade-in effect
+        }, 5000); // Hide the message after 5 seconds
         form.reset();
       } else {
         alert("Something went wrong: " + result.error);
@@ -182,3 +211,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
