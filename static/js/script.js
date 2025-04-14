@@ -5,12 +5,7 @@ const nameObserver = new IntersectionObserver(
   },
   { threshold: 0.23 }
 );
-try {
-  nameObserver.observe(document.querySelector("#sec2"));
-} catch {
-  console.log("ahh");
-}
-
+nameObserver.observe(document.querySelector("#sec2"));
 const navObserver = new IntersectionObserver(
   ([entry]) => {
     const menuIcon = document.querySelector(".menu-icon");
@@ -22,11 +17,8 @@ const navObserver = new IntersectionObserver(
   },
   { threshold: 0.1 } // lower threshold so it changes color sooner
 );
-try {
-  nameObserver.observe(document.querySelector("#sec2"));
-} catch {
-  console.log("ahh");
-}
+navObserver.observe(document.querySelector("#sec2"));
+
 
 
 
@@ -211,5 +203,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-

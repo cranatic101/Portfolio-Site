@@ -6,7 +6,9 @@
   --primary-black: #070d13; 
 }
 
-
+html {
+  scroll-behavior: smooth;
+}
 /* Custom styles for the slider */
 .slider-container {
   margin-top: 20px;
@@ -478,7 +480,7 @@ h1 {
   position: absolute;
   width:110%;
   height:100%;
-  top: 0;
+  top: -5%;
   left: 0;
   pointer-events: none;
 }
