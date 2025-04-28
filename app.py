@@ -16,7 +16,7 @@ app.config['MAIL_PASSWORD'] = config.get("EMAIL_APP_PASSWORD")     # your Gmail 
 app.config['MAIL_DEFAULT_SENDER'] = 'suhaasvellanki07@gmail.com'    # same as your username
 
 mail = Mail(app)
-
+ 
 @app.route('/')
 def landing():
     return render_template('landing.html')
@@ -51,6 +51,8 @@ def send_email():
         return jsonify({"success": True}), 200
     except Exception as e:
         print(f"Error: {e}")
+
+        #
         return jsonify({"success": False, "error": str(e)}), 500
 
 

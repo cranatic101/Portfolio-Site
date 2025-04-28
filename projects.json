@@ -2,31 +2,31 @@
   {
     "name": "Project 5",
     "year": 2024,
-    "image": "bg-mountain.jpg",
+    "image": "mountain-bg1.png",
     "description": "Description of Project 5."
   },
   {
     "name": "Project 4",
     "year": 2023,
-    "image": "mountain.png",
+    "image": "mountain-bg2.png",
     "description": "Description of Project 4."
   },
   {
     "name": "Project 3",
     "year": 2022,
-    "image": "mountain-bg.png",
+    "image": "mountain-bg3.png",
     "description": "Description of Project 3."
   },
   {
     "name": "Project 2",
     "year": 2021,
-    "image": "mountain.png",
+    "image": "mountain-bg4.png",
     "description": "Description of Project 2."
   },
   {
     "name": "Project 1",
     "year": 2020,
-    "image": "bg-mountain.jpg",
+    "image": "mountain-bg5.png",
     "description": "Description of Project 1."
   }
 ]

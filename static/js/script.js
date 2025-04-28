@@ -1,28 +1,30 @@
-const nameObserver = new IntersectionObserver(
-  ([entry]) => {
-    const nameElement = document.getElementById("name");
-    nameElement.style.color = entry.isIntersecting ? "#fffff5ff" : "#070d13";
-  },
-  { threshold: 0.23 }
-);
-nameObserver.observe(document.querySelector("#sec2"));
-const navObserver = new IntersectionObserver(
-  ([entry]) => {
-    const menuIcon = document.querySelector(".menu-icon");
-    if (entry.isIntersecting) {
-      menuIcon.classList.add("white-icon");
-    } else {
-      menuIcon.classList.remove("white-icon");
-    }
-  },
-  { threshold: 0.1 } // lower threshold so it changes color sooner
-);
-navObserver.observe(document.querySelector("#sec2"));
+const pathName = window.location.pathname;
+
+if (pathName == "/") {
+  console.log("landing");
+  const nameObserver = new IntersectionObserver(
+    ([entry]) => {
+      const nameElement = document.getElementById("name");
+      nameElement.style.color = entry.isIntersecting ? "#fffff5ff" : "#070d13";
+    },
+    { threshold: 0.23 }
+  );
 
 
-
-
-
+  nameObserver.observe(document.querySelector("#sec2"));
+  const navObserver = new IntersectionObserver(
+    ([entry]) => {
+      const menuIcon = document.querySelector(".menu-icon");
+      if (entry.isIntersecting) {
+        menuIcon.classList.add("white-icon");
+      } else {
+        menuIcon.classList.remove("white-icon");
+      }
+    },
+    { threshold: 0.1 } // lower threshold so it changes color sooner
+  );
+  navObserver.observe(document.querySelector("#sec2"));
+}
 const projects = document.querySelectorAll(".project");
 const timelineItems = document.querySelectorAll(".timeline li");
 
@@ -54,8 +56,8 @@ function updateSelection() {
         closestProject.classList.add("selected");
         const index = closestProject.dataset.index;
         timelineItems[index].classList.add("active");
-    }
-}
+    };
+};
 
 // Scroll event listener to update selection
 try {
@@ -128,20 +130,20 @@ try {
 }
 
 
-const slider = document.getElementById('mode-slider');
-const htmlElement = document.documentElement; // This is the <html> element
+if (pathName == "/") {
+  console.log("landing");
+  window.addEventListener('scroll', function () {
+    const sec2 = document.querySelector('#sec2');
+    const text = document.querySelector('#belowText');
+    const sec2Top = sec2.getBoundingClientRect().top;
 
-window.addEventListener('scroll', function () {
-  const sec2 = document.querySelector('#sec2');
-  const text = document.querySelector('#belowText');
-  const sec2Top = sec2.getBoundingClientRect().top;
-
-  if (sec2Top < window.innerHeight * 0.75) {
-    text.classList.add('visible');
-  } else {
-    text.classList.remove('visible');
-  }
-});
+    if (sec2Top < window.innerHeight * 0.75) {
+      text.classList.add('visible');
+    } else {
+      text.classList.remove('visible');
+    }
+  });
+};
 
 window.addEventListener("scroll", function () {
   const scrollTop = window.pageYOffset;
@@ -153,53 +155,55 @@ window.addEventListener("scroll", function () {
   });
 });
 
+if (pathName == "/contact") {
+  console.log("contact");
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    console.log("js");
 
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contactForm');
-  console.log("js");
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      console.log("subm");
+      const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+      };
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    console.log("subm");
-    const formData = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value
-    };
+      try {
+        const res = await fetch('/send_email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
 
-    try {
-      const res = await fetch('/send_email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      const result = await res.json();
-      if (result.success) {
-        // Prevent default form submission
-        
-        // Get the confirmation message element
-        var message = document.getElementById("confirmationMessage");
-        
-        // Show the confirmation message
-        message.style.display = "block"; // Make the message visible
-        
-        // Add class to make the message fade in
-        message.classList.add("visible");
-        
-        // Optionally, hide the message after a few seconds
-        setTimeout(function() {
-          message.style.display = "none"; // Hide the message again
-          message.classList.remove("visible"); // Reset the fade-in effect
-        }, 5000); // Hide the message after 5 seconds
-        form.reset();
-      } else {
-        alert("Something went wrong: " + result.error);
+        const result = await res.json();
+        if (result.success) {
+          // Prevent default form submission
+          
+          // Get the confirmation message element
+          var message = document.getElementById("confirmationMessage");
+          
+          // Show the confirmation message
+          message.style.display = "block"; // Make the message visible
+          
+          // Add class to make the message fade in
+          message.classList.add("visible");
+          
+          // Optionally, hide the message after a few seconds
+          setTimeout(function() {
+            message.style.display = "none"; // Hide the message again
+            message.classList.remove("visible"); // Reset the fade-in effect
+          }, 5000); // Hide the message after 5 seconds
+          form.reset();
+        } else {
+          alert("Something went wrong: " + result.error);
+        }
+      } catch (err) {
+        alert("Error: " + err.message);
       }
-    } catch (err) {
-      alert("Error: " + err.message);
-    }
+    });
   });
-});
+};
