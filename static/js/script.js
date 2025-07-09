@@ -7,7 +7,7 @@ if (pathName == "/") {
       const nameElement = document.getElementById("name");
       nameElement.style.color = entry.isIntersecting ? "#fffff5ff" : "#070d13";
     },
-    { threshold: 0.23 }
+    { threshold: 0.4 }
   );
 
 
@@ -21,7 +21,7 @@ if (pathName == "/") {
         menuIcon.classList.remove("white-icon");
       }
     },
-    { threshold: 0.1 } // lower threshold so it changes color sooner
+    { threshold: 0.3 } // lower threshold so it changes color sooner
   );
   navObserver.observe(document.querySelector("#sec2"));
 }
@@ -55,6 +55,7 @@ function updateSelection() {
         // Select the closest project and corresponding timeline item
         closestProject.classList.add("selected");
         const index = closestProject.dataset.index;
+        
         timelineItems[index].classList.add("active");
     };
 };

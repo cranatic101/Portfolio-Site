@@ -25,6 +25,7 @@ def landing():
 def portfolio():
     with open("projects.json", "r") as f:
         projects = json.load(f)
+        print(projects)
     return render_template('portfolio.html', projects=projects)
 
 @app.route('/contact')
@@ -54,6 +55,10 @@ def send_email():
 
         #
         return jsonify({"success": False, "error": str(e)}), 500
+
+@app.route('/items', methods = ["GET","POST"])
+def items():
+    return render_template('test.html', items = [1,2,3,4])
 
 
 if __name__ == '__main__':

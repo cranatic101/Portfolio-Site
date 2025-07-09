@@ -103,7 +103,7 @@ h1 {
 
   width:100%;
   position: absolute;
-  top:-60%;
+  top:-40%;
   left:-1%;
   
   
@@ -113,7 +113,7 @@ h1 {
 
   width:100%;
   position: absolute;
-  top:-60%;
+  top:-40%;
   left:-1%;
   z-index:-1;
   
@@ -347,7 +347,7 @@ h1 {
   justify-content: space-between;  /* Space between the title/description and image */
   scroll-snap-align: center;
   transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out, opacity 0.3s ease-in-out;
-  margin: 70px 0;
+  margin: 120px 0;
   opacity: 0.5;
 }
 
@@ -472,9 +472,14 @@ h1 {
   text-decoration: none
 }
 
+.space {
+  height:0px;
+}
+
 .parallax-container {
   position: relative;
   height: 700px;
+  padding-top:850px;
   overflow: hidden;
 }
 
